@@ -29,7 +29,6 @@ function inti_table_of_contents(){
         const element = all_h1[index];
         let item = '<li class="clickable">'+element.innerHTML+'</li>';
         t_o_con.append(item);
-
         t_o_con.children(":nth-child("+(index+1)+")").click(function(){
             view(element);
         });

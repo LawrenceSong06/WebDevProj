@@ -16,6 +16,7 @@ function validate_form(){
         const cur = required[index];
         const element = document.querySelector('input[name="'+cur+'"]');
         if(!element.checkValidity()){
+            document.querySelector('.msg').classList.remove('hidden');
             document.querySelector('label[for="'+cur+'"]').style.color='red';
             res=false;
         }

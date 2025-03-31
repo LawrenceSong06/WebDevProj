@@ -44,8 +44,8 @@ function init_keyboard_accessibility(){
 
 function init(){
     init_nav();
-    init_keyboard_accessibility();
     init_fullscreen();
     if(path[path.length-1] == "index.html") init_index();
     else if(path[path.length-1] == "visitors.html") init_visitors();
+    init_keyboard_accessibility();
 }
