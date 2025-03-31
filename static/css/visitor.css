@@ -1,0 +1,414 @@
+/* Root */
+:root{
+    --myBlue:#41668B;
+    --myRed:#8B4142;
+    --myYellow: #8B8A41;
+    --myGrey:rgb(207, 207, 207);
+}
+
+/* Layout of this page */
+main{
+    display: grid;
+    grid-template-areas: 
+    'table_of_contents container';
+    grid-template-columns: 15% 81%;
+    gap:0 4%;
+
+    box-sizing: border-box;
+    width: 100%;
+    padding: 3% 2% 3% 2%;
+}
+
+/* Table of Contents */
+#table_of_contents .table_head{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    gap:5%;
+}
+#table_of_contents .table_head h1{
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;   
+}
+#table_of_contents{
+    grid-area: table_of_contents;
+
+    background-color: var(--myBlue);
+    padding:0 0.5em 0.5em 0.5em;
+
+    width: 100%;
+    height:fit-content;
+    position:sticky;
+    top:0;
+
+    line-height: 2;
+}
+#table_of_contents button{
+    background-color: var(--myRed);
+    border:none;
+    width:100%;
+
+    padding:2% 2% 2% 2%;
+}
+#table_of_contents ol{  
+    transition: ease 1s;
+    max-height: 0;
+    overflow: hidden;
+
+    margin:0 0 0 0;
+}
+#table_of_contents .back-to-top{
+    background-color: var(--myYellow);
+}
+#table_of_contents ol.active{  
+    max-height: 100svh;
+}
+#table_of_contents li:hover{
+    text-decoration: underline white;
+}
+#table_of_contents *{
+    color:white;
+}
+
+/* Container */
+main>.container{
+    grid-area: container;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap:20ex;
+
+    box-sizing: border-box;
+    width:100%;
+}
+
+/* Item1 */
+main>.container .item1{
+    background-color: var(--myRed);
+
+    width:100%;
+    box-sizing: border-box;
+
+    padding: 1% 1% 1% 1%;
+}
+main>.container .item1 *{
+    color:white;
+}
+
+/* Table */
+main>.container>.item2{
+    box-sizing: border-box;
+    width: 100%;
+    border-collapse: collapse;
+    grid-area: fares;
+}
+main>.container>.item2 td{
+    padding:0 1em 0 1em;
+}
+main>.container>.item2 caption{
+    text-align: left;
+}
+main>.container>.item2 thead *{
+    font-weight:400;
+    text-align: center;
+}
+main>.container>.item2 thead td:first-child{
+    font-weight:400;
+    text-align: right;
+}
+main>.container>.item2 tbody tr:nth-child(odd){
+    background-color: var(--myGrey);
+}
+main>.container>.item2 tbody tr td:first-child{
+    font-weight:400;
+    text-align: right;
+}
+main>.container>.item2 tbody tr td{
+    text-align: center;
+}
+main>.container>.item2 tfoot tr:last-child{
+    background-color: var(--myRed);
+}
+main>.container>.item2 tfoot tr:last-child *{
+    color:white;
+}
+
+/* Item3 */
+main>.container>.item3{
+    box-sizing: border-box;
+    height:50svh;
+    display: grid;
+    width: 100%;
+    grid-template-areas: 
+        'h1'
+        'map'
+        'description';
+    grid-template-rows: 2em 80% auto;
+}
+main>.container>.item3 h1{
+    transition: ease 1s;
+    grid-area: h1;
+}
+main>.container>.item3 .map-container{
+    grid-area: map;
+    border: solid 0.15em var(--myRed);
+    border-radius: 1em 1em 0 0;
+}
+main>.container>.item3>p{
+    grid-area: description;
+    background-color: var(--myRed);
+
+    margin:0 0 0 0;
+    padding:0.2em 1em 0 1em;
+    color:white;
+}
+
+/* Item4 */
+main>.container>.item4{
+    box-sizing: border-box;
+    width: 100%;
+}
+main>.container>.item4 article{
+    display: grid;
+    grid-template-areas: 
+        'h3 h3'
+        'figure figure'
+        'p p'
+        'ul ul'
+        'link link';
+    grid-template-columns: 50% 45%;
+    grid-template-rows: 1em 10em 3em 8em 2em;
+    width:100%;
+    gap:1em 5%;
+    overflow: hidden;
+}
+main>.container>.item4 article h3{
+    grid-area: h3;
+}
+main>.container>.item4 article p{
+    grid-area: p;
+}
+main>.container>.item4 article ul{
+    grid-area: ul;
+    margin-top:0;
+}
+main>.container>.item4 article figure{
+    grid-area: figure;
+
+    margin: 0 0 0 0;
+    height:100%;
+    width:100%;
+    gap:5%;
+}
+main>.container>.item4 article figure .slider{
+    grid-area: slider;
+    height:100%;
+    width:100%;
+    
+    overflow: hidden;
+    border-radius: 1em;
+
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+}
+.slider img{
+    height:auto;
+    width:100%;
+    object-fit: cover;
+    flex-shrink: 0;
+
+    animation:slide_animation 15s linear infinite;
+}
+main>.container>.item4 a{
+    grid-area: link;
+    background-color: var(--myBlue);
+    color:white;
+    text-decoration: none;
+    padding:.1em .4em .1em .4em;
+    
+    height:fit-content;
+    width:fit-content;
+
+    border-radius: 100svh;
+}
+main>.container>.item4 a:hover{
+    text-decoration: underline;
+}
+
+
+/* Item5 */
+main>.container>.item5{
+    box-sizing: border-box;
+    width:100%;
+}
+main>.container>.item5 h1{
+    background-color: var(--myRed);
+    color: white;
+    width:100%;
+}
+main>.container>.item5 h2{
+    background-color: var(--myBlue);
+    color: white;
+    width:100%;
+}
+main>.container>.item5 h3{
+    margin:1em 0 0 .2em;
+    width:100%;
+}
+main>.container>.item5 article{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap:1em;
+
+    box-sizing: border-box;
+    width:100%;
+}
+main>.container>.item5 article section{
+    box-sizing: border-box;
+    width: 100%;
+}
+main>.container>.item5 article section .container{
+    flex:1;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    
+    box-sizing: border-box;
+    width: 100%;
+
+    gap:.5em;
+    
+}
+main>.container>.item5 article section .container div{
+    flex-shrink: 0;
+
+    box-sizing: border-box;
+    width:10em;
+    height:10em;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    border-radius: 1em;
+
+    padding: 1em 1em 1em 1em;
+}
+main>.container>.item5 article section .container div *{
+    margin:0 0 0 0;
+    text-align: center;
+}
+main>.container>.item5 article section .container div a{
+    height: 4em;
+    text-decoration: none;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+main>.container>.item5 article section .container img{
+    width:100%;
+    height:100%;
+    object-fit: contain;
+}
+.default_card{
+    background-color: var(--myYellow);
+}
+.white_card{
+    background-color: white;
+    border:solid 2px black;
+}
+.black_card{
+    background-color: black;
+}
+.pitts_and_more{
+    background-color:rgb(39, 80, 68);
+}
+.mollys_trolleys{
+    background-color: rgb(255, 222, 106);
+}
+.rivers_of_steel{
+    background-color: rgb(255, 203, 8);
+}
+.mtb_fish{
+    background-color: rgb(149, 177, 186);
+}
+.sheraton_hotel{
+    background-color: rgb(58, 58, 58);
+}
+.hardrock{
+    background-color: rgb(158, 108, 27);
+}
+.gateway{
+    background-color: rgb(0, 79, 209);
+}
+.segway{
+    background-color: #ECECEC;
+}
+.riv_cas{
+    background-color: rgb(243, 245, 247);
+}
+.riverquest{
+    background-color: #1D2A33;
+}
+.mf_muse{
+    background-color: #9F71AF;
+}
+.b_theater{
+    background-color: #282828;
+}
+
+/* Maps */
+.map_container{
+    width:100%;
+    height:100%;
+}
+.map_info{
+    font-size:1em;
+}
+.map_info>figure{
+    height:100%;
+    width:100%;
+    margin: 0 0 0 0;
+}
+.map_info>figure>*{
+    height:100%;
+    width:100%;
+    object-fit: contain;
+}
+
+/* Animations */
+@keyframes slide_animation{
+    0%{
+        transform: translateX(0%);
+    }
+    33%{
+        transform: translateX(0%);
+    }
+    34%{
+        transform: translateX(-100%);
+    }
+    66%{
+        transform: translateX(-100%);
+    }
+    67%{
+        transform: translateX(-200%);
+    }
+    99%{
+        transform: translateX(-200%);
+    }
+    100%{
+        transform:translateX(0%);
+    }
+}

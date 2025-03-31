@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Duquesne Incline Official Website</title>
+    <!-- Icon -->
+    <link href="./static/imgs/DuqInclineLogo.png" rel="icon">
+
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous" defer></script>
+    
+    <!-- Common JS -->
+    <script src="./static/js/script.js" defer></script>
+    <script src="./static/js/page_controlls.js" defer></script>
+    <script src="./static/js/fullscreen.js" defer></script>
+    <!--  JS for this page-->
+    <script src="./static/js/index_html/history.js" defer></script>
+    <script src="./static/js/index_html/index_init.js" defer></script>
+    <script src="./static/js/index_html/photos.js" defer></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./static/css/style.css">
+    <link rel="stylesheet" href="./static/css/home.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body onload="init()">
+    <div class="container">
+        <header>
+            <div class="background_filter">
+                <div class="webname">
+                    <img src="./static/imgs/DuqInclineLogo.png" alt="Our logo" class="logo" title="The logo of the webpage, illustrating rail car of Duquesne Incline in a black-and-whtie hand drawn style">
+                    <p class="title">THE DUQUESNE INCLINE</p>
+                </div>
+            </div>
+        </header>
+        <nav>
+            <a href="./index.html" class="subtitle red">Home</a>
+            <a href="./views/visitors.html" class="subtitle">For Visitors</a>
+            <a href="./views/giftshop.html" class="subtitle">Gift Shop</a>
+            <a href="./views/contact.html" class="subtitle">Contact Us</a>
+        </nav>
+        <main>
+            <div class="item1">
+                <h1 class="align-right">
+                    Welcome to Dunquesne Incline!
+                </h1>
+                <h2 class="align-right">Introduction</h2>
+                <p class="indented align-justified"> 
+                    Take a step back in time on a century-old cable car and see the best views of downtown Pittsburgh while riding one of the few remaining inclines in the country. 
+                    Opened on May 20, 1877, the Duquesne Incline was rescued and restored by a group of local residents in 1963 and still delights residents and visitors with its original, elegant, wooden cable cars. Now you can visit the interior of the incline and watch the machinery while it operates. 
+                    The Duquesne Incline's upper station houses a museum of Pittsburgh history, including photos and a storehouse of information on inclines from around the world. Unusual Pittsburgh souvenirs, maps and photos can be found at the gift shop.
+                </p>
+                <figure>
+                    <iframe loading="lazy" alt="Youtube Video-Only in Pittsburgh: Duquesne Incline" src="https://www.youtube.com/embed/bSLvrz5GraI" title="Only in Pittsburgh: Duquesne Incline" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </figure>
+            </div>
+            <div class="item2">
+                <article class="facts">
+                    <h1>Facts</h1>
+                    <ul>
+                        <li>
+                            <b>Opened to Public:</b> May 20, 1877
+                        </li>
+                        <li>
+                            <b>Cost to Build:</b> $47,000
+                        </li>
+                        <li>
+                            <b>Length of Track:</b> 794 feet
+                        </li>
+                        <li>
+                            <b>Elevation: 400 feet</b>
+                        </li>
+                        <li>
+                            <b>Grade:</b> 30.5 degrees
+                        </li>
+                        <li>
+                            <b>Speed:</b> 6 miles per hour
+                        </li>
+                        <li>
+                            <b>Passenger Capacity:</b> 18 per car
+                        </li>
+                    </ul>
+                </article>
+                <article class="our_history">
+                    <section>
+                        <h1>Our History</h1>
+                        <h2>
+                            Loading Text...
+                        </h2>
+                        <div class="text_box">
+
+                        </div>
+                        <div class="tools">
+                            <button onclick="our_history_pg(-1)" class="clickable iconfont">&#xe622;</button>
+                            <span class="page_num">
+                                Loading...
+                            </span>
+                            <button onclick="our_history_pg(1)" class="clickable iconfont">&#xe626;</button>
+                        </div>
+                    </section>
+                </article>
+            </div>
+            <div class="item3">
+                <h1>Our Photos</h1>
+                <div class="fullscreen hidden">
+                    <div class="container">
+                        <div class="top_bar">
+                            <h1>
+                                Title
+                            </h1>
+                            <div class="tools">
+                                <button class="iconfont clickable" onclick="close_fullscreen()">&#xe61c;</button>
+                            </div>
+                        </div>
+                        <figure>
+                            <!-- Place to put imgs -->
+                        </figure>
+                    </div>
+                </div>
+                <figure>
+                    <div class="imgs">
+                        <img class="clickable" loading="lazy" src="./static/imgs/home-slideshow/brad-killen-3-unsplash.jpg" alt="image_of_house" title="A front look of the entrance of Duquesne Incline">
+                        <img class="clickable" loading="lazy" src="./static/imgs/home-slideshow/brad-killen-4-unsplash.jpg" alt="car_view_photo" title="A photo of a car of Duquesne Incline">
+                        <img class="clickable" loading="lazy" src="./static/imgs/home-slideshow/brad-killen-5-unsplash.jpg" alt="landscape" title="Roberto Clemente Bridge looked from the top of Duquesne Incline">
+                        <img class="clickable" loading="lazy" src="./static/imgs/home-slideshow/brad-killen-6-unsplash.jpg" alt="stadium" title="A picture of Acrisure Stadium, taken on the top of the Duquesne Incline">
+                        <img class="clickable" loading="lazy" src="./static/imgs/home-slideshow/Unsplash_Brad Kille_2.jpg" alt="landscape2" title="Another picture of Roberto Clemente Bridge">
+                        <img class="clickable" loading="lazy" src="./static/imgs/home-slideshow/vidar-nordli-mathisen-1-unsplash.jpg" alt="Duquesne_Incline_night" title="An overview of the landscape of Pittsburgh, along with a Duquesne Incline car in the center of the picture">
+                    </div>
+                    <figcaption>
+                        *Click on images to view in fullscreen
+                    </figcaption>
+                </figure>
+            </div>
+        </main>
+        <footer>
+            <div class="container">
+                <div class="item1">
+                    <h1>The Duquesne Incline</h1>
+                    <img src="./static/imgs/DuqInclineLogo.png" alt="Our logo" class="logo" title="The logo of the webpage, illustrating rail car of Duquesne Incline in a black-and-whtie hand drawn style">
+                </div>
+                <div class="item2">
+                    <h1>Hours of Operation</h1>
+                    <p>Open 365 Days a Year</p>
+                    <p>Everyday: 6:30 a.m. -- 12:30 a.m.</p>
+                    <p>No Reservations. No Advance Tickets</p>
+                </div>
+                <div class="item3">
+                    <h1>Contact Information</h1>
+                    <p>1197 West Carson Street, Pittsburgh, PA 15219</p>
+                    <p>Phone Number: 412.381.1665</p>
+                    <p>Fax: 412.381.1943</p>
+                    <p>duq.incline@duquesneincline.org</p>
+                </div>
+                <div class="item4">
+                    <h1>Follow Our Social Media!</h1>
+                    <div class="social_media_list">
+                        <!-- Facebook -->
+                        <a href="https://www.facebook.com/TheDuquesneIncline" target="_blank">
+                            <img src="./static/icons/facebookpng.png" alt="Facebook" title="Facebook">
+                        </a>
+                        <!-- Yelp-->
+                        <a href="https://www.yelp.com/biz/duquesne-incline-pittsburgh" target="_blank">
+                            <img src="./static/icons/yelp.png" alt="Yelp" title="Yelp">
+                        </a>
+                        <!-- Viator -->
+                        <a href="https://www.viator.com/Pittsburgh-attractions/Duquesne-Incline/d22639-a21677" target="_blank">
+                            <img src="./static/icons/viator.jpg" alt="Viator" title="Viator">
+                        </a>
+                        <!-- Visit Pittsburgh -->
+                        <a href="https://www.visitpittsburgh.com/directory/duquesne-incline/" target="_blank">
+                            <img src="./static/icons/Visit_Pittsburgh.png" alt="Visit Pittsburgh" title="Visit Pittsburgh">
+                        </a>
+                        <!-- Wikipedia -->
+                        <a href="https://en.wikipedia.org/wiki/Duquesne_Incline" target="_blank">
+                            <img src="./static/icons/wikipedia.png" alt="Wikipedia" title="Wikipedia" class="filled">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <p>Copyright&copy; Duquesne Incline | <a href="./views/citations.html"> Image Citations (Click to See)</a> | Website Design & Programming: Lawrence Song</p>
+       </footer>
+    </div>
+</body>
+</html>

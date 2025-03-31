@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Duquesne Incline Official Website</title>
+    <!-- Icon -->
+    <link href="../static/imgs/DuqInclineLogo.png" rel="icon">
+
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous" defer></script>
+    
+    <!-- Common JS -->
+    <script src="../static/js/script.js" defer></script>
+    <script src="../static/js/page_controlls.js" defer></script>
+    <script src="../static/js/fullscreen.js" defer></script>
+    <!--  JS for this page-->
+    <script src="../static/js/visitors_html/visitors_init.js"></script>
+    <script src="../static/js/visitors_html/map.js"></script>
+    <script src="../static/js/visitors_html/table_of_contents.js"></script>
+
+    <!-- Google Maps API -->
+    <script>
+        var KEY;
+        fetch('../key.env')
+        .then(response => response.text())
+        .then(KEY => {
+            (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
+                key: KEY,
+                v: "weekly",
+                // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
+                // Add other bootstrap parameters as needed, using camel case.
+            });
+        })
+        .catch(err => console.err("Error fetching key!"));
+        
+    </script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/visitor.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body onload="init()">
+    <div class="container">
+        <header>
+            <div class="background_filter">
+                <div class="webname">
+                    <img src="../static/imgs/DuqInclineLogo.png" alt="Our logo" class="logo" title="The logo of the webpage, illustrating rail car of Duquesne Incline in a black-and-whtie hand drawn style">
+                    <p class="title">THE DUQUESNE INCLINE</p>
+                </div>
+            </div>
+        </header>
+        <nav>
+            <a href="../index.html" class="subtitle red">Home</a>
+            <a href="../views/visitors.html" class="subtitle">For Visitors</a>
+            <a href="../views/giftshop.html" class="subtitle">Gift Shop</a>
+            <a href="../views/contact.html" class="subtitle">Contact Us</a>
+        </nav>
+        <main>
+            <div id="table_of_contents">
+                <div class="table_head">
+                    <h1>Contents</h1>
+                </div>
+                <ol class="active">
+                    
+                </ol>
+                <button class="back-to-top clickable iconfont" title="Back to top" onclick="back_to_top()">&#xe634; Back To Top</button>
+                <button class="toggle iconfont clickable" title="Collapse/Extend" onclick="toggle_table_of_contents(this)">&#xe621; Collapse</button>
+            </div>
+            <div class="container">
+                <div class="item1">
+                    <h1>Time of Operation</h1>
+                    <ul>
+                        <li>
+                            Opens 365 days a year
+                        </li>
+                        <li>
+                            Everyday from: 6:30 a.m. -- 12:30 a.m.
+                        </li>
+                        <li>No reservations. No advance tickets</li>
+                    </ul>
+                </div>
+                <table class="item2">
+                    <caption>
+                        <h1>Individual Fares and Group Rates</h1>
+                    </caption>
+                    <thead>
+                        <tr>
+                            <td>Fares (Individual/Group)</td>
+                            <td>One Way</td>
+                            <td>Round Trip</td>
+                            <td>Notes</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Adults (Age 12-64)</td>
+                            <td>$2.50/$1.75</td>
+                            <td>$5.00/$3.50</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Children (Age 6-11)</td>
+                            <td>$1.25/$1.00</td>
+                            <td>$2.50/$1.75</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Children (Age &lt; 6)</td>
+                            <td>Free</td>
+                            <td>Free</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Seniors (Age &geq; 65)</td>
+                            <td>Free</td>
+                            <td>Free</td>
+                            <td>
+                                Requires blue/yellow PRT card or Senior Connect Card
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>UPitt/CMU/Catham Students</td>
+                            <td>Free</td>
+                            <td>Free</td>
+                            <td>
+                                Please bring proper Student ID
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="4">
+                                *Group rates are valid for any group with &geq; 10 people.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">
+                                *Cash fares as well as Port Authority bus passes and tickets are accepted as payment.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">
+                                *Wheelchair accessibility is via Upper Station located 1220 Grandview Avenue Pittsburgh, PA. 15211.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">
+                                Click to Schedule A Group Trip For:
+                                <a href="https://form.jotform.com/240705601606145">Bus Companies</a>
+                                |
+                                <a href="https://form.jotform.com/240705601606145">Schools</a>
+                                |
+                                <a href="https://form.jotform.com/240705601606145">Patch Program</a>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <div class="item3">
+                        <h1>Location & Parking</h1>
+                        <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3036.600802247323!2d-80.0201228242443!3d40.43983757143583!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8834f6af24753323%3A0x391d7b79fc54985b!2sDuquesne%20Incline!5e0!3m2!1sen!2sus!4v1743229380078!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+                        <div id="map1" class="map-container">
+     
+                        </div>
+                        <p>
+                            1197 West Carson St. Pittsburgh, PA. 15219.
+                        </p>
+                </div> 
+                <div class="item4">
+                    <h1>Field Trips</h1>
+                    <h2>Field Trip Program For Students & Youth Groups</h2>
+                    <article>
+                        <h3>What Can a Field Trip Do?</h3>
+                        <p>      
+                            <b>                         
+                                A free field trip program is available for students and youth groups of ten or more daily -- except Saturdays and Sundays after 12:00 noon due to weekend crowds and limited space. The program includes:
+                            </b>
+                        </p>
+                        <ul class="align-justified">
+                            <li>A teacher's lesson packet for students' specific grade level</li>
+                            <li>A round trip ride on the Duquesne Incline</li>
+                            <li>A history of inclines in Pittsburgh</li>
+                            <li>A discussion about Pittsburgh's industrial past</li>
+                            <li>A visit to the machine room to observe the original hoisting equipment in operation and learn about the engineers who built it</li>
+                            <li>A panoramic view of Downtown Pittsburgh and The North Shore from our observation deck 400 feet above the three rivers</li>
+                            <li>A brief history of the French and Indian War from which the city arose</li>
+                        </ul>
+                        <figure class="slideshow">
+                            <div class="slider">
+                                <img src="../static/imgs/visitors/fieldtirp/note-thanun1.jpg" alt="field trip.jpg" title="A picture illustrating school kids taking field trip">
+                                <img src="../static/imgs/visitors/fieldtirp/venti-views1.jpg" alt="pitsburgh.jpg" title="A picture of the landscape of Pittsburgh">
+                                <img src="../static/imgs/visitors/fieldtirp/yuhan-du1.jpg" alt="pittsburgh_from_Duquesne_Incline.jpg" title="A view of Pittsburgh's city from Duquesne Incline">
+                            </div>
+                        </figure>
+                        <a href="https://www.duquesneincline.org/duquesneincline/view.php?id=1" target="_blank">Click Here to Reserve Now!</a>
+                    </article>
+                </div>
+                <!-- Problem -->
+                <div class="item5">
+                    <h1>City Tours</h1>
+                        <article>
+                            <section>
+                                <h2>City Tours That Feature The Duquesne Incline (Click on Icon to See Website)</h2>
+                                <div class="container">
+                                    <div class="pitts_and_more dark">
+                                        <a href="https://www.pghtoursandmore.net/"><img src="../static/icons/pittsmore.jpg" alt="Link"></a>
+                                        <b class="small">Pittsburgh And More</b>
+                                        <p class="small">
+                                            Pittsburgh Movie Locations, Sports, Breweries, Wineries and More.
+                                        </p>
+                                        <p>412-323-4707</p>
+                                    </div>
+                                    <div class="mollys_trolleys">
+                                        <a href="https://www.mollystrolleyspgh.com/"><img src="../static/icons/molly_trolley.png" alt="Link"></a>
+                                        <b class="small">Molly's Trolleys</b>
+                                        <p class="small">Start Touring Pittsburgh in Molly's Trolleys's Featured Bus!</p>
+                                        <p>412-281-2055</p>
+                                    </div>
+                                    <div class="rivers_of_steel">
+                                        <a href="https://riversofsteel.com/"><img src="../static/icons/RofSLogo.png" alt="Link"></a>
+                                        <b class="small">Rivers of Steel</b>
+                                        <p class="small">Artistry, Innovation, Industry, Cultural Heritage</p>
+                                        <p>412-464-4020</p>
+                                        <p>412-381-8687</p>
+                                    </div>
+                                    <div class="black_card dark">
+                                        <a href="https://www.pghtours.com/"><img src="../static/icons/ThePittsTour.png" alt="Link"></a>
+                                        <b class="small">The Pittsburgh Tour Company</b>
+                                        <p class="small">Hop on/Hop off Double Decker tour buses from London.</p>
+                                        <p>412-381-8687</p>
+                                    </div>
+                                </div>
+                            </section>
+                            <section>
+                                <h2>Things To Do After Incline Visit</h2>
+                                <h3>Dine on Grandview Avenue:</h3>
+                                <div class="container">
+                                    <div class="black_card dark">
+                                        <a href="https://www.steelmillsaloon.com/"><img src="../static/icons/steel_mill.png" alt="Link"></a>
+                                        <b class="small">Steel Mill Saloon</b>
+                                        <p class="small">Restaurant</p>
+                                        <p>412-586-4926</p>
+                                    </div>
+                                    <div class="white_card">
+                                        <a href="http://www.thegrandviewsaloon.com/"><img src="../static/icons/gview_s.png" alt="Link"></a>
+                                        <b class="small">Coal Hill Steak House (Grandview Saloon)</b>
+                                        <p class="small">Restaurant</p>
+                                        <p>412-431-1400</p>
+                                    </div>
+                                    <div class="black_card dark">
+                                        <a href="https://www.lemontpittsburgh.com/"><img src="../static/icons/lemont.png" alt="Link"></a>
+                                        <b class="small">LeMont Restaurant</b>
+                                        <p class="small">Restaurant</p>
+                                        <p>412-431-3100</p>
+                                    </div>
+                                    <div class="mtb_fish dark">
+                                        <a href="https://www.montereybayfishgrotto.com/"><img src="../static/icons/mtbf.png" alt="Link"></a>
+                                        <b class="small">Monterey Bay Fish Grotto</b>
+                                        <p class="small">Restaurant</p>
+                                        <p>412-381-19196</p>
+                                    </div>
+                                </div>
+                                <h3>Explore Station Square (Less than one mile east of our Lower Station):</h3>
+                                <div class="container">
+                                    <div class="sheraton_hotel dark">
+                                        <a href="https://www.sheraton.com/stationsquare/"><img src="../static/icons/sheraton.png" alt="Link"></a>
+                                        <b class="small">Sheraton Pittsburgh Hotel</b>
+                                        <p class="small">Hotel</p>
+                                        <p>412-261-20006</p>
+                                    </div>
+                                    <div class="hardrock dark">
+                                        <a href="https://www.hardrock.com/pittsburgh/"><img src="../static/icons/hardrock.png" alt="Link"></a>
+                                        <b class="small">Hard Rock Cafe</b>
+                                        <p class="small">Cafe</p>
+                                        <p>412-481-7625</p>
+                                    </div>
+                                    <div class="gateway dark">
+                                        <a href="https://www.gatewayclipper.com/"><img src="../static/icons/gateway-clipper-logo1.png" alt="Link"></a>
+                                        <b class="small">Gateway Clipper Fleet</b>
+                                        <p class="small">Sightseeing Tours & Riverboat Dining Cruises</p>
+                                        <p>412-355-7993</p>
+                                    </div>
+                                    <div class="mollys_trolleys">
+                                        <a href="https://www.mollystrolleyspittsburgh.com/ "><img src="../static/icons/molly_trolley.png" alt="Link"></a>
+                                        <b class="small">Molly's Trolleys</b>
+                                        <p class="small">Charter A Customized Sightseeing Tour</p>
+                                        <p>412-281-2085</p>
+                                    </div>
+                                    <div class="segway">
+                                        <a href="https://https://segwaypittsburgh.com/ "><img src="../static/icons/segway.png" alt="Link"></a>
+                                        <b class="small">Segway in Paradise</b>
+                                        <p class="small">Guided Tours on Upright Two Wheeled Vehicles Offer an Unforgetable Way to Experience Pittsbugh</p>
+                                        <p>412-337-3941</p>
+                                    </div>
+                                </div>
+                                <h3>Explore the North Shore (Just across the West End Bridge from our Lower Station):</h3>
+                                <div class="container">
+                                    <div class="riv_cas">
+                                        <a href="https://www.theriverscasino.com/"><img src="../static/icons/riv_casi.svg" alt="Link"></a>
+                                        <b class="small">Rivers Casino Pittsbugh</b>
+                                        <p class="small">Casino</p>
+                                        <p>412-231-7777</p>
+                                    </div>
+                                    <div class="default_card dark">
+                                        <a><img src="../static/icons/flag.svg" alt="Link"></a>
+                                        <b class="small">Heinz Field Home To The Pittsburgh Steelers And University Of Pittsburgh Panthers Football Teamsh</b>
+                                        <p class="small">Tour</p>
+                                        <p>412-323-1200</p>
+                                    </div>
+                                    <div class="black_card dark">
+                                        <a href="https://www.pittsburghpirates.com/"><img src="../static/icons/pirates.svg" alt="Link"></a>
+                                        <b class="small">PNC Park Home To The Pittsburgh Pirates</b>
+                                        <p class="small">Sports</p>
+                                        <p>412-321-BUCS</p>
+                                    </div>
+                                    <div class="white_card">
+                                        <a href="https://www.carnegiesciencecenter.org/"><img src="../static/icons/csc.png" alt="Link"></a>
+                                        <b class="small">Carnegie Science Center/Highmark Sports Works</b>
+                                        <p class="small">Science Experience, 19th Century Engineering, History Educational Tour Of The Duquesne Incline (Just Across The River)</p>
+                                        <p>412-237-3336</p>
+                                    </div>
+                                    <div class="riverquest dark">
+                                        <a href="https://www.riverquest.com/"><img src="../static/icons/riverquest.png" alt="Link"></a>
+                                        <b class="small">Riverquest</b>
+                                        <p class="small">An Educational River Cruise</p>
+                                        <p>412-231-2712</p>
+                                    </div>
+                                    <div class="white_card">
+                                        <a href="https://www.pittsburghkids.org/"><img src="../static/icons/childmus.webp" alt="Link"></a>
+                                        <b class="small">Children's Museum</b>
+                                        <p class="small">Museum</p>
+                                        <p>412-322-5058</p>
+                                    </div>
+                                    <div class="white_card">
+                                        <a href="https://www.aviary.org/"><img src="../static/icons/na_logo.svg" alt="Link"></a>
+                                        <b class="small">National Aviary</b>
+                                        <p class="small">It's For The Birds</p>
+                                        <p>412-323-7235</p>
+                                    </div>
+                                    <div class="white_card">
+                                        <a href="https://www.warhol.org/"><img src="../static/icons/warhol.svg" alt="Link"></a>
+                                        <b class="small">Andy Warhol Museum</b>
+                                        <p class="small">Museum</p>
+                                        <p>412-237-8300</p>
+                                    </div>
+                                    <div class="mf_muse">
+                                        <a href="https://www.mattress.org/"><img src="../static/icons/mf.png" alt="Link"></a>
+                                        <b class="small">Matress Factory Art Museum</b>
+                                        <p class="small">Museum</p>
+                                        <p>412-231-3169</p>
+                                    </div>
+                                </div>
+                                <h3>Downtown - Just across the Fort Pitt Bridge from our Lower Station (less than 2 minutes):</h3>
+                                <div class="container">
+                                    <div class="white_card">
+                                        <a href="https://www.downtownpittsburgh.com/market-square/"><img src="../static/icons/mar_sq.png" alt="Link"></a>
+                                        <b class="small">Market Square</b>
+                                        <p class="small">Place</p>
+                                        <p></p>
+                                    </div>
+                                    <div class="white_card">
+                                        <a href="https://www.bikepittsburgh.com/"><img src="../static/icons/bike.png" alt="Link"></a>
+                                        <b class="small">Golden Triangle Bike Rental</b>
+                                        <p class="small">Take A Ride On The 26 Miles Of Scenic Riverfront Trail</p>
+                                        <p>412-600-0675</p>
+                                    </div>
+                                    <div class="b_theater dark">
+                                        <a href="https://www.culturaldistrict.org/venues/byham-theater/"><img src="../static/icons/btheater.svg" alt="Link"></a>
+                                        <b class="small">Byham Theater</b>
+                                        <p class="small">Take A Ride On The 26 Miles Of Scenic Riverfront Trail</p>
+                                        <p>412-456-6666</p>
+                                    </div>
+                                    <div class="black_card dark">
+                                        <a href="https://www.ppgpaintsarena.com/"><img src="../static/icons/ppg.svg" alt="Link"></a>
+                                        <b class="small">Ppg Paints Arena</b>
+                                        <p class="small">Home of The Pittsburgh Penguins</p>
+                                        <p>412-642-1800</p>
+                                    </div>
+                                    <div class="black_card dark">
+                                        <a href="https://www.heinzhistorycenter.org/"><img src="../static/icons/heinz_history.webp" alt="Link"></a>
+                                        <b class="small">Senator John Heinz History Center</b>
+                                        <p class="small">Museum</p>
+                                        <p>412-454-6000</p>
+                                    </div>
+                                </div>
+                                <h3>Sites Of Interest</h3>
+                                <div class="container">
+                                    <div class="black_card dark">
+                                        <a href="https://www.visitpittsburgh.com/"><img src="../static/icons/Visit_Pittsburgh.png" alt="Link"></a>
+                                        <b class="small">Visit Pittsburgh</b>
+                                        <p class="small">Website</p>
+                                        <p>800-359-0758</p>
+                                    </div>
+                                </div>
+                            </section>
+                        </article>     
+                </div>
+            </div>
+        </main>
+        <footer>
+            <div class="container">
+                <div class="item1">
+                    <h1>The Duquesne Incline</h1>
+                    <img src="../static/imgs/DuqInclineLogo.png" alt="Our logo" class="logo" title="The logo of the webpage, illustrating rail car of Duquesne Incline in a black-and-whtie hand drawn style">
+                </div>
+                <div class="item2">
+                    <h1>Hours of Operation</h1>
+                    <p>Open 365 Days a Year</p>
+                    <p>Everyday: 6:30 a.m. -- 12:30 a.m.</p>
+                    <p>No Reservations. No Advance Tickets</p>
+                </div>
+                <div class="item3">
+                    <h1>Contact Information</h1>
+                    <p>1197 West Carson Street, Pittsburgh, PA 15219</p>
+                    <p>Phone Number: 412.381.1665</p>
+                    <p>Fax: 412.381.1943</p>
+                    <p>duq.incline@duquesneincline.org</p>
+                </div>
+                <div class="item4">
+                    <h1>Follow Our Social Media!</h1>
+                    <div class="social_media_list">
+                        <!-- Facebook -->
+                        <a href="https://www.facebook.com/TheDuquesneIncline" target="_blank">
+                            <img src="../static/icons/facebookpng.png" alt="Facebook" title="Facebook">
+                        </a>
+                        <!-- Yelp-->
+                        <a href="https://www.yelp.com/biz/duquesne-incline-pittsburgh" target="_blank">
+                            <img src="../static/icons/yelp.png" alt="Yelp" title="Yelp">
+                        </a>
+                        <!-- Viator -->
+                        <a href="https://www.viator.com/Pittsburgh-attractions/Duquesne-Incline/d22639-a21677" target="_blank">
+                            <img src="../static/icons/viator.jpg" alt="Viator" title="Viator">
+                        </a>
+                        <!-- Visit Pittsburgh -->
+                        <a href="https://www.visitpittsburgh.com/directory/duquesne-incline/" target="_blank">
+                            <img src="../static/icons/Visit_Pittsburgh.png" alt="Visit Pittsburgh" title="Visit Pittsburgh">
+                        </a>
+                        <!-- Wikipedia -->
+                        <a href="https://en.wikipedia.org/wiki/Duquesne_Incline" target="_blank">
+                            <img src="../static/icons/wikipedia.png" alt="Wikipedia" title="Wikipedia" class="filled">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <p>Copyright&copy; Duquesne Incline | <a href="./citations.html"> Image Citations (Click to See)</a> | Website Design & Programming: Lawrence Song</p>
+       </footer>
+    </div>
+</body>
+</html>

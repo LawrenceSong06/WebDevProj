@@ -1,0 +1,47 @@
+:root{
+    --myBlue:#41668B;
+    --myRed:#8B4142;
+    --myYellow: #8B8A41;
+    --myGrey:rgb(207, 207, 207);
+  }
+
+/* Design of the Page */
+main{
+    display: flex;
+    flex-direction: column;
+    padding:3% 1% 1% 1%;    
+}
+main>.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap ;
+
+    padding:1% 1% 1% 1%;
+
+    gap:.5em;
+}
+main>.container .items{
+    width:12em;
+    height:12em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    padding: 1em 1em 1em 1em;
+    border-radius: 1em;
+
+    background-color: var(--myRed);
+}
+main>.container .items figure{
+    margin:0 0 0 0;
+}
+main>.container .items figure img{
+    height:10em;
+    width:100%;
+    object-fit: contain;
+}
+main>.container .items h3{
+    margin:0 0 0 0;
+}

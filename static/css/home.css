@@ -1,0 +1,259 @@
+/* Root */
+:root{
+    --myBlue:#41668B;
+    --myRed:#8B4142;
+    --myYellow: #8B8A41;
+    --myGrey:rgb(207, 207, 207);
+}
+
+/* Design of This Page */
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+/* Main Content */
+main>div{
+    padding: 3% 2% 3% 2%;
+}
+main>.item1{
+    max-height: 45svh;
+    background-color: var(--myRed);
+
+    display: grid;
+    grid-template-areas: 
+        'text-h1 figure'
+        'text-h2 figure'
+        'text-p figure';
+    grid-template-rows: 10% 10% 74%;
+    grid-template-columns: 60% 38%;
+    gap:3% 2%;
+}
+main>.item2{
+    height: 50svh;
+    display: grid;
+    grid-template-areas: 
+        'our_history facts';
+    grid-template-columns: 70% 27%;
+    gap:3%;
+
+    overflow: hidden;
+}
+main>.item3{
+    max-height:45svh;
+
+    display: grid;
+    grid-template-areas: 
+    'h1 h1'
+    'gallery gallery';
+    grid-template-rows: 10% 90%;
+}
+
+/* Item1 (Introduction)*/
+main>.item1 *{
+    margin: 0 0 0 0;
+    color:white;
+}
+    /* --[Item1] Text */
+    main>.item1 h1{
+        grid-area:text-h1;
+    }
+    main>.item1 h2{
+        grid-area:text-h2;
+    }
+    main>.item1 p{
+        grid-area:text-p;
+
+        padding-right:5px;
+        overflow: auto;
+    }
+    /* --[Item1] Figure */
+    main>.item1>figure{
+        grid-area:figure;
+    }
+    main>.item1>figure>iframe{
+        border: none;
+        border-radius:30px;
+        height:100%;
+        width:100%;
+    }
+
+/* Item2*/
+    /* [Item2] --Our History */
+    main>.item2>.our_history{
+        height:inherit;
+        grid-area: our_history;
+    
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+        /* [Item2] --[Our History] --Section*/
+        main>.item2>.our_history>section{
+            height:100%;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }   
+            /* [Item2] --[Our History] --[Section] --Text Box*/
+            main>.item2>.our_history>section>.text_box{
+                overflow: auto;
+                flex:1;
+            }
+            main>.item2>.our_history>section>.text_box>div{
+                animation: fadein 400ms;
+                display: none;
+            }
+            main>.item2>.our_history>section>.text_box>div.active{
+                display: block;
+            }
+            main>.item2>.our_history>section>.text_box>div p{
+                margin: 0 0 0 0;
+            }
+            /* [Item2] --[Our History] --[Section] --Controller*/
+            main>.item2>.our_history>section>.tools{
+                padding-left: 0; 
+            }
+            main>.item2>.our_history>section>.tools>.page_num{
+                display: inline-block;
+                text-align: center;
+                width:4em;
+
+                color: var(--myRed);
+                font-weight: 400;
+            }
+            main>.item2>.our_history>section>.tools button{
+                border:none;
+                background-color: var(--myRed);
+                
+                color: white;
+                font-weight: 500;
+            }
+            main>.item2>.our_history>section>.tools button:hover{
+                text-decoration: underline;
+            }
+    /* [Item2] --Facts */
+    main>.item2>.facts{
+        grid-area:facts;
+        background-color: var(--myGrey);
+
+        padding: 2% 2% 2% 2%;
+    }
+        /* [Item2] --[Facts] --Text */
+        main>.item2>.facts>ul{
+            list-style-type: square;
+            font-weight: 300;
+        }
+        main>.item2>.facts>ul b{
+            font-weight:500;
+            color:var(--myBlue);
+        }
+
+/* Item3 (Our Photos)*/
+    /* [Item3] --h1*/
+    main>.item3 h1{
+        grid-area: h1;
+    }
+    /* [Item3] --Figure*/
+    main>.item3>figure{
+        margin-left: 0;
+        grid-area: gallery;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+
+        margin:0 0 0 0;
+    }
+        /* [Item3] --[Figure] --figcaption */
+        main>.item3 figure>figcaption{
+            grid-area:figcap;
+
+            padding:.4% .2% .4% .2%;
+            width:fit-content;
+            color:var(--myRed);
+        }            
+        /* [Item3] --[Figure] --imgs */
+        main>.item3 figure>.imgs{
+            grid-area:imgs;
+
+            background-color: var(--myRed);
+
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            flex-wrap: nowrap;
+            gap:1%;
+
+            padding: 1% 0 1% 0;
+
+            overflow: auto;
+        }
+        main>.item3 figure>.imgs img{
+            max-width: 100%;
+            height:100%;
+        }
+
+    /* [Item3] --Fullscreen */
+        main>.item3>.fullscreen>.container{
+            width:100%;
+            height:100%;
+
+            display: grid;
+            grid-template-areas: 
+                'top_bar'
+                'figure';
+            grid-template-rows: 10% 80%;
+        }
+        /* [Item3] --[Fullscreen] --Top bar */
+        main>.item3>.fullscreen>.container .top_bar{
+            grid-area: top_bar;
+            
+            display: flex;
+            justify-content: flex-end;
+
+            padding:1% 1% 1% 1%;
+        }
+        main>.item3>.fullscreen>.container .top_bar>h1{
+            text-align: center;
+            color:white;
+            flex:1;
+            display: inline-block;
+        }
+        main>.item3>.fullscreen>.container .top_bar>.tools{
+            display: inline-flex;
+            justify-content: flex-end;
+        }
+        main>.item3>.fullscreen>.container .top_bar>.tools>button{
+            height:100%;
+
+            border:none;
+        }
+        /* [Item3] --[Fullscreen] --Figure */
+        main>.item3>.fullscreen>.container>figure{
+            grid-area:figure;
+
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+
+            width:100%;
+            background-color: black;
+            margin:0 0 0 0;
+        }
+            /* [Item3] --[Fullscreen] --[Figure] --img */
+            main>.item3>.fullscreen>.container>figure>img{
+                width:100%;
+                height:100%;
+                object-fit: contain;
+            }
+/* Animations */
+@keyframes fadein{
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
+}
