@@ -25,6 +25,5 @@ function validate_form(){
 }
 $('input[type!=submit]').keydown(function(){
     let field = this.name;
-    console.log(field);
     document.querySelector('label[for="'+field+'"]').style.color='white';
 });
