@@ -9,4 +9,11 @@
         position:unset;
         box-sizing: border-box;
     }
+    main>.container>.item5 article section .container{
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+    main>.container>.item5 article section .container div{
+        width:100%;
+    }
 }
