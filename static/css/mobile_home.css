@@ -1,0 +1,65 @@
+@media only screen and (max-width:800px){
+    main>.item1{
+        background-color: var(--myRed);
+    
+        grid-template-areas: 
+            'figure figure'
+            'article article';
+        gap:3%;
+    }
+    main>.item1 .align-right{
+        text-align: center;
+    }
+    main>.item2{
+        height: 75svh;
+        display: grid;
+        grid-template-areas: 
+            'our_history our_history'
+            'facts facts';
+        grid-template-rows: 65% 42%;
+        gap:3%;
+
+        overflow: hidden;
+    }
+    main>.item2>.our_history{
+        padding-bottom: .5em;
+        height:100%;
+    }
+    main>.item2>.our_history>section>.tools{
+        display:grid;
+        grid-template-areas: 'page_num prev next';
+        grid-template-columns: 30% 35% 35%;
+
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    main>.item2>.our_history>section>.tools>.page_num{
+        grid-area:page_num;
+
+        display: inline-block;
+        text-align: left;
+        flex:1;
+
+        color: var(--myRed);
+        font-weight: 400;
+    }
+    main>.item2>.our_history>section>.tools button{
+        height:5svh;
+        width:100%;
+    }
+    main>.item2>.our_history>section>.tools button:nth-child(1){
+        grid-area: prev;
+    }
+    main>.item2>.our_history>section>.tools button:nth-child(2){
+        grid-area: next;
+    }
+
+    main>.item3 figure>.imgs{
+        scroll-snap-type: x mandatory;
+    }
+    main>.item3 figure>.imgs img{
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
+    }
+}

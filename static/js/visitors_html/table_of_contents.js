@@ -4,9 +4,8 @@ function view(element){
     });
 }
 function back_to_top(){
-    window.scrollTo({
-        behavior:'smooth',
-        top:0,
+    document.getElementById("table_of_contents").scrollIntoView({
+        behavior:'smooth',block:'start'
     });
 }
 
@@ -33,4 +32,14 @@ function inti_table_of_contents(){
             view(element);
         });
     }
+
+    $(".back-to-top").fadeOut(0);
+    $(window).scroll(function(){
+        let s = $(window).scrollTop();
+        if(s > document.getElementById("table_of_contents").offsetTop + document.getElementById("table_of_contents").offsetHeight){
+            $(".back-to-top").fadeIn(200);
+        }else{
+            $(".back-to-top").fadeOut(200);
+        }
+    })
 }

@@ -1,0 +1,12 @@
+@media only screen and (max-width:800px){
+    main{
+        grid-template-areas: 
+        'table_of_contents table_of_contents'
+        'container container';
+        gap:2em 5%;
+    }
+    #table_of_contents{
+        position:unset;
+        box-sizing: border-box;
+    }
+}

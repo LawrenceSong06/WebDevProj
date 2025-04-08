@@ -1,15 +1,10 @@
-:root{
-    --myBlue:#41668B;
-    --myRed:#8B4142;
-    --myYellow: #8B8A41;
-    --myGrey:rgb(207, 207, 207);
-  }
-
 /* Design of the Page */
 main{
     display: flex;
     flex-direction: column;
-    padding:3% 1% 1% 1%;    
+    width:100%;
+    box-sizing: border-box;
+    padding:1em 1em 1em 1em;    
 }
 main>.container{
     display: flex;
@@ -17,9 +12,10 @@ main>.container{
     justify-content: flex-start;
     flex-wrap: wrap ;
 
-    padding:1% 1% 1% 1%;
+    width: 100%;
+    box-sizing: border-box;
 
-    gap:.5em;
+    gap:.2em;
 }
 main>.container .items{
     width:12em;
@@ -30,9 +26,10 @@ main>.container .items{
     align-items: center;
 
     padding: 1em 1em 1em 1em;
-    border-radius: 1em;
+    border-radius: .3em;
+    border: solid 2px var(--myGrey);
 
-    background-color: var(--myRed);
+    /* background-color: var(--myGrey); */
 }
 main>.container .items figure{
     margin:0 0 0 0;

@@ -1,22 +1,15 @@
-/* Root */
-:root{
-    --myBlue:#41668B;
-    --myRed:#8B4142;
-    --myYellow: #8B8A41;
-    --myGrey:rgb(207, 207, 207);
-}
-
 /* Layout of this page */
 main{
     display: grid;
     grid-template-areas: 
+    'table_of_contents container'
     'table_of_contents container';
     grid-template-columns: 15% 81%;
     gap:0 4%;
 
     box-sizing: border-box;
     width: 100%;
-    padding: 3% 2% 3% 2%;
+    padding: 1em 1em 1em 1em;
 }
 
 /* Table of Contents */
@@ -34,6 +27,7 @@ main{
 }
 #table_of_contents{
     grid-area: table_of_contents;
+    scroll-margin: 2em;
 
     background-color: var(--myBlue);
     padding:0 0.5em 0.5em 0.5em;
@@ -41,7 +35,7 @@ main{
     width: 100%;
     height:fit-content;
     position:sticky;
-    top:0;
+    top:2.5em;
 
     line-height: 2;
 }
@@ -59,9 +53,6 @@ main{
 
     margin:0 0 0 0;
 }
-#table_of_contents .back-to-top{
-    background-color: var(--myYellow);
-}
 #table_of_contents ol.active{  
     max-height: 100svh;
 }
@@ -72,6 +63,22 @@ main{
     color:white;
 }
 
+
+.back-to-top{
+    background-color: var(--myYellow);
+    border:none;
+    width:3em;
+    height:3em;
+    color:white;
+    padding:2% 2% 2% 2%;
+    position:fixed;
+    right:1em;
+    top:60%;
+    z-index: 1;
+    padding:.5em .5em .5em .5em;
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.438);
+    border-radius: 100%;
+}
 /* Container */
 main>.container{
     grid-area: container;
@@ -79,7 +86,7 @@ main>.container{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    gap:10ex;
+    gap:4em;
 
     box-sizing: border-box;
     width:100%;
@@ -97,13 +104,18 @@ main>.container .item1{
 main>.container .item1 *{
     color:white;
 }
+h1{
+    scroll-margin: 2em;
+}
 
 /* Table */
 main>.container>.item2{
     box-sizing: border-box;
-    width: 100%;
     border-collapse: collapse;
     grid-area: fares;
+
+    table-layout: fixed;
+    width: 100%;
 }
 main>.container>.item2 td{
     padding:0 1em 0 1em;
@@ -172,40 +184,22 @@ main>.container>.item4{
     width: 100%;
 }
 main>.container>.item4 article{
-    display: grid;
-    grid-template-areas: 
-        'h3 h3'
-        'figure figure'
-        'p p'
-        'ul ul'
-        'link link';
-    grid-template-columns: 50% 45%;
-    grid-template-rows: 1em 10em 3em 8em 2em;
+    grid-template-columns: 50% 50%;
     width:100%;
-    gap:1em 5%;
+    gap:1em 0;
     overflow: hidden;
 }
-main>.container>.item4 article h3{
-    grid-area: h3;
-}
-main>.container>.item4 article p{
-    grid-area: p;
-}
 main>.container>.item4 article ul{
-    grid-area: ul;
     margin-top:0;
 }
 main>.container>.item4 article figure{
-    grid-area: figure;
-
-    margin: 0 0 0 0;
-    height:100%;
+    margin: 2ex 0 2ex 0;
+    height:20ex;
     width:100%;
     gap:5%;
 }
 main>.container>.item4 article figure .slider{
-    grid-area: slider;
-    height:100%;
+    height:90%;
     width:100%;
     
     overflow: hidden;
@@ -223,8 +217,29 @@ main>.container>.item4 article figure .slider{
     width:100%;
     object-fit: cover;
     flex-shrink: 0;
-
-    animation:slide_animation 15s linear infinite;
+    transition:ease 500ms;
+}
+.slider img.paused{
+    transition:none;
+}
+.slideshow .controls{
+    margin-top:1em;
+    height: 1em;
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    gap:.3em;
+}
+.slideshow .controls button{
+    padding:0 0 0 0;
+    width:.5em;
+    height:.5em;
+    border:none;
+    border-radius: 100%;
+    background-color: var(--myGrey);
+}
+.slideshow .controls button.active{
+    background-color: black;
 }
 main>.container>.item4 a{
     grid-area: link;
@@ -277,10 +292,10 @@ main>.container>.item5 article section{
     width: 100%;
 }
 main>.container>.item5 article section .container{
-    flex:1;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+
     flex-wrap: wrap;
     
     box-sizing: border-box;
@@ -288,6 +303,18 @@ main>.container>.item5 article section .container{
 
     gap:.5em;
     
+    max-height: 0;
+    overflow: hidden;
+}
+main>.container>.item5 article section .container.active{
+    max-height: fit-content;
+}
+main>.container>.item5 article section button{
+    background:none;
+    border: none;
+    color: inherit;
+    padding:
+     0 0 0 0;
 }
 main>.container>.item5 article section .container div{
     flex-shrink: 0;
@@ -389,26 +416,3 @@ main>.container>.item5 article section .container img{
 }
 
 /* Animations */
-@keyframes slide_animation{
-    0%{
-        transform: translateX(0%);
-    }
-    33%{
-        transform: translateX(0%);
-    }
-    34%{
-        transform: translateX(-100%);
-    }
-    66%{
-        transform: translateX(-100%);
-    }
-    67%{
-        transform: translateX(-200%);
-    }
-    99%{
-        transform: translateX(-200%);
-    }
-    100%{
-        transform:translateX(0%);
-    }
-}

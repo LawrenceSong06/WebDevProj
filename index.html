@@ -15,6 +15,7 @@
     <script src="./static/js/script.js" defer></script>
     <script src="./static/js/page_controlls.js" defer></script>
     <script src="./static/js/fullscreen.js" defer></script>
+    <script src="./static/js/toggle_nav.js" defer></script>
     <!--  JS for this page-->
     <script src="./static/js/index_html/history.js" defer></script>
     <script src="./static/js/index_html/index_init.js" defer></script>
@@ -23,6 +24,8 @@
     <!-- CSS -->
     <link rel="stylesheet" href="./static/css/style.css">
     <link rel="stylesheet" href="./static/css/home.css">
+    <link rel="stylesheet" href="./static/css/mobile_style.css">
+    <link rel="stylesheet" href="./static/css/mobile_home.css">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,30 +35,38 @@
 <body onload="init()">
     <div class="container">
         <header>
-            <div class="background_filter">
-                <div class="webname">
-                    <img src="./static/imgs/DuqInclineLogo.png" alt="Our logo" class="logo" title="The logo of the webpage, illustrating rail car of Duquesne Incline in a black-and-whtie hand drawn style">
-                    <p class="title">THE DUQUESNE INCLINE</p>
-                </div>
+            <div class="webname">
+                <img src="./static/imgs/DuqInclineLogo.png" alt="Our logo" class="logo" title="The logo of the webpage, illustrating rail car of Duquesne Incline in a black-and-whtie hand drawn style">
+                <p class="title">THE DUQUESNE INCLINE</p>
             </div>
         </header>
-        <nav>
-            <a href="./index.html" class="subtitle red">Home</a>
-            <a href="./views/visitors.html" class="subtitle">For Visitors</a>
-            <a href="./views/giftshop.html" class="subtitle">Gift Shop</a>
-            <a href="./views/contact.html" class="subtitle">Contact Us</a>
+        <nav class="active">
+            <figure>
+                <img src="./static/imgs/DuqInclineLogo.png" alt="Our logo" class="logo" title="The logo of the webpage, illustrating rail car of Duquesne Incline in a black-and-whtie hand drawn style">
+                <figcaption class="subtitle">The Duquesne Incline</figcaption>
+            </figure>
+            <button class="toggle iconfont" onclick="toggle_nav(this)">&#xe620;</button>
+            <div class="links">
+                <a href="./index.html" class="subtitle align-left">Home</a>
+                <a href="./views/visitors.html" class="subtitle">For Visitors</a>
+                <a href="./views/giftshop.html" class="subtitle">Gift Shop</a>
+                <a href="./views/contact.html" class="subtitle">Contact Us</a>
+            </div>
         </nav>
         <main>
             <div class="item1">
-                <h1 class="align-right">
-                    Welcome to Dunquesne Incline!
-                </h1>
-                <h2 class="align-right">Introduction</h2>
-                <p class="indented align-justified"> 
-                    Take a step back in time on a century-old cable car and see the best views of downtown Pittsburgh while riding one of the few remaining inclines in the country. 
-                    Opened on May 20, 1877, the Duquesne Incline was rescued and restored by a group of local residents in 1963 and still delights residents and visitors with its original, elegant, wooden cable cars. Now you can visit the interior of the incline and watch the machinery while it operates. 
-                    The Duquesne Incline's upper station houses a museum of Pittsburgh history, including photos and a storehouse of information on inclines from around the world. Unusual Pittsburgh souvenirs, maps and photos can be found at the gift shop.
-                </p>
+                <article>
+                    <h1 class="align-right">
+                        Welcome to Dunquesne Incline!
+                    </h1>
+                    <h2 class="align-right">Introduction</h2>
+                    <p class="indented align-justified"> 
+                        Take a step back in time on a century-old cable car and see the best views of downtown Pittsburgh while riding one of the few remaining inclines in the country. 
+                        Opened on May 20, 1877, the Duquesne Incline was rescued and restored by a group of local residents in 1963 and still delights residents and visitors with its original, elegant, wooden cable cars. Now you can visit the interior of the incline and watch the machinery while it operates. 
+                        The Duquesne Incline's upper station houses a museum of Pittsburgh history, including photos and a storehouse of information on inclines from around the world. Unusual Pittsburgh souvenirs, maps and photos can be found at the gift shop.
+                    </p>                   
+                </article>
+
                 <figure>
                     <iframe loading="lazy" src="https://www.youtube.com/embed/bSLvrz5GraI" title="Only in Pittsburgh: Duquesne Incline" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </figure>

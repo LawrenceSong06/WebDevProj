@@ -15,12 +15,14 @@
     <script src="../static/js/script.js" defer></script>
     <script src="../static/js/page_controlls.js" defer></script>
     <script src="../static/js/fullscreen.js" defer></script>
+    <script src="../static/js/toggle_nav.js" defer></script>
     <!--  JS for this page-->
     <script src="../static/js/contact_html/contact.js" defer></script>
 
     <!-- CSS -->
     <link rel="stylesheet" href="../static/css/style.css">
     <link rel="stylesheet" href="../static/css/contact.css">
+    <link rel="stylesheet" href="../static/css/mobile_style.css">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,18 +32,23 @@
 <body onload="init()">
     <div class="container">
         <header>
-            <div class="background_filter">
-                <div class="webname">
-                    <img src="../static/imgs/DuqInclineLogo.png" alt="Our logo" class="logo" title="The logo of the webpage, illustrating rail car of Duquesne Incline in a black-and-whtie hand drawn style">
-                    <p class="title">THE DUQUESNE INCLINE</p>
-                </div>
+            <div class="webname">
+                <img src="../static/imgs/DuqInclineLogo.png" alt="Our logo" class="logo" title="The logo of the webpage, illustrating rail car of Duquesne Incline in a black-and-whtie hand drawn style">
+                <p class="title">THE DUQUESNE INCLINE</p>
             </div>
         </header>
-        <nav>
-            <a href="../index.html" class="subtitle red">Home</a>
-            <a href="../views/visitors.html" class="subtitle">For Visitors</a>
-            <a href="../views/giftshop.html" class="subtitle">Gift Shop</a>
-            <a href="../views/contact.html" class="subtitle">Contact Us</a>
+        <nav class="active">
+            <figure>
+                <img src="../static/imgs/DuqInclineLogo.png" alt="Our logo" class="logo" title="The logo of the webpage, illustrating rail car of Duquesne Incline in a black-and-whtie hand drawn style">
+                <figcaption class="subtitle">The Duquesne Incline</figcaption>
+            </figure>
+            <button class="toggle iconfont" onclick="toggle_nav(this)">&#xe620;</button>
+            <div class="links">
+                <a href="../index.html" class="subtitle red">Home</a>
+                <a href="../views/visitors.html" class="subtitle">For Visitors</a>
+                <a href="../views/giftshop.html" class="subtitle">Gift Shop</a>
+                <a href="../views/contact.html" class="subtitle">Contact Us</a>
+            </div>
         </nav>
         <main>
             <h1>Contact Us!</h1>

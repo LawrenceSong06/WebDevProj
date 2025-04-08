@@ -15,31 +15,43 @@
     <script src="../static/js/script.js" defer></script>
     <script src="../static/js/page_controlls.js" defer></script>
     <script src="../static/js/fullscreen.js" defer></script>
+    <script src="../static/js/toggle_nav.js" defer></script>
     <!--  JS for this page-->
-    <script src="../static/js/visitors_html/visitors_init.js"></script>
-    <script src="../static/js/visitors_html/map.js"></script>
-    <script src="../static/js/visitors_html/table_of_contents.js"></script>
+    <script src="../static/js/visitors_html/visitors_init.js" defer></script>
+    <script src="../static/js/visitors_html/map.js" defer></script>
+    <script src="../static/js/visitors_html/table_of_contents.js" defer></script>
+    <script src="../static/js/visitors_html/citytour_list.js" defer></script>
+    <script src="../static/js/visitors_html/slider.js" defer></script>
 
-    <!-- Google Maps API -->
-    <script>
-        var KEY;
+    <!-- Google API -->
+    <script defer>
         fetch('../key.env')
-        .then(response => response.text())
-        .then(KEY => {
+        .then(response => response.json())
+        .then(data => {
             (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
-                key: KEY,
+                key: data.KEY,
                 v: "weekly",
                 // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
                 // Add other bootstrap parameters as needed, using camel case.
             });
         })
-        .catch(err => console.err("Error fetching key!"));
-        
+        .catch(err =>{
+            console.error("Error fetching key!"+err);
+            let user_KEY = prompt("Please Enter Your Google API Key To Use Google Map in This Page:");
+            (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
+                key: user_KEY,
+                v: "weekly",
+                // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
+                // Add other bootstrap parameters as needed, using camel case.
+            });
+        });
     </script>
 
     <!-- CSS -->
     <link rel="stylesheet" href="../static/css/style.css">
     <link rel="stylesheet" href="../static/css/visitor.css">
+    <link rel="stylesheet" href="../static/css/mobile_style.css">
+    <link rel="stylesheet" href="../static/css/mobile_visitors.css">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,18 +61,23 @@
 <body onload="init()">
     <div class="container">
         <header>
-            <div class="background_filter">
-                <div class="webname">
-                    <img src="../static/imgs/DuqInclineLogo.png" alt="Our logo" class="logo" title="The logo of the webpage, illustrating rail car of Duquesne Incline in a black-and-whtie hand drawn style">
-                    <p class="title">THE DUQUESNE INCLINE</p>
-                </div>
+            <div class="webname">
+                <img src="../static/imgs/DuqInclineLogo.png" alt="Our logo" class="logo" title="The logo of the webpage, illustrating rail car of Duquesne Incline in a black-and-whtie hand drawn style">
+                <p class="title">THE DUQUESNE INCLINE</p>
             </div>
         </header>
-        <nav>
-            <a href="../index.html" class="subtitle red">Home</a>
-            <a href="../views/visitors.html" class="subtitle">For Visitors</a>
-            <a href="../views/giftshop.html" class="subtitle">Gift Shop</a>
-            <a href="../views/contact.html" class="subtitle">Contact Us</a>
+        <nav class="active">
+            <figure>
+                <img src="../static/imgs/DuqInclineLogo.png" alt="Our logo" class="logo" title="The logo of the webpage, illustrating rail car of Duquesne Incline in a black-and-whtie hand drawn style">
+                <figcaption class="subtitle">The Duquesne Incline</figcaption>
+            </figure>
+            <button class="toggle iconfont" onclick="toggle_nav(this)">&#xe620;</button>
+            <div class="links">
+                <a href="../index.html" class="subtitle red">Home</a>
+                <a href="../views/visitors.html" class="subtitle">For Visitors</a>
+                <a href="../views/giftshop.html" class="subtitle">Gift Shop</a>
+                <a href="../views/contact.html" class="subtitle">Contact Us</a>
+            </div>
         </nav>
         <main>
             <div id="table_of_contents">
@@ -70,10 +87,10 @@
                 <ol class="active">
                     
                 </ol>
-                <button class="back-to-top clickable iconfont" title="Back to top" onclick="back_to_top()">&#xe634; Back To Top</button>
                 <button class="toggle iconfont" title="Collapse/Extend" onclick="toggle_table_of_contents(this)">&#xe621; Collapse</button>
             </div>
             <div class="container">
+                <button class="back-to-top iconfont" title="Back to top" onclick="back_to_top()">&#xe634;</button>
                 <div class="item1">
                     <h1>Time of Operation</h1>
                     <ul>
@@ -176,6 +193,16 @@
                     <h1>Field Trips</h1>
                     <h2>Field Trip Program For Students & Youth Groups</h2>
                     <article>
+                        <figure class="slideshow">
+                            <div class="slider">
+                                <img src="../static/imgs/visitors/fieldtirp/note-thanun1.jpg" alt="field trip.jpg" title="A picture illustrating school kids taking field trip">
+                                <img src="../static/imgs/visitors/fieldtirp/venti-views1.jpg" alt="pitsburgh.jpg" title="A picture of the landscape of Pittsburgh">
+                                <img src="../static/imgs/visitors/fieldtirp/yuhan-du1.jpg" alt="pittsburgh_from_Duquesne_Incline.jpg" title="A view of Pittsburgh's city from Duquesne Incline">
+                            </div>
+                            <div class="controls">
+
+                            </div>
+                        </figure>
                         <h3>What Can a Field Trip Do?</h3>
                         <p>      
                             <b>                         
@@ -191,13 +218,6 @@
                             <li>A panoramic view of Downtown Pittsburgh and The North Shore from our observation deck 400 feet above the three rivers</li>
                             <li>A brief history of the French and Indian War from which the city arose</li>
                         </ul>
-                        <figure class="slideshow">
-                            <div class="slider">
-                                <img src="../static/imgs/visitors/fieldtirp/note-thanun1.jpg" alt="field trip.jpg" title="A picture illustrating school kids taking field trip">
-                                <img src="../static/imgs/visitors/fieldtirp/venti-views1.jpg" alt="pitsburgh.jpg" title="A picture of the landscape of Pittsburgh">
-                                <img src="../static/imgs/visitors/fieldtirp/yuhan-du1.jpg" alt="pittsburgh_from_Duquesne_Incline.jpg" title="A view of Pittsburgh's city from Duquesne Incline">
-                            </div>
-                        </figure>
                         <a href="https://www.duquesneincline.org/duquesneincline/view.php?id=1" target="_blank">Click Here to Reserve Now!</a>
                     </article>
                 </div>
@@ -206,7 +226,7 @@
                     <h1>City Tours</h1>
                         <article>
                             <section>
-                                <h2>City Tours That Feature The Duquesne Incline (Click on Icon to See Website)</h2>
+                                <h2>City tours that feature the Duquesne Incline (Click on icon to see website)<button class="iconfont" onclick="toggle_list(this)">&#xe629;</button></h2>
                                 <div class="container">
                                     <div class="pitts_and_more dark">
                                         <a href="https://www.pghtoursandmore.net/"><img src="../static/icons/pittsmore.jpg" alt="Link"></a>
@@ -238,8 +258,8 @@
                                 </div>
                             </section>
                             <section>
-                                <h2>Things To Do After Incline Visit</h2>
-                                <h3>Dine on Grandview Avenue:</h3>
+                                <h2>Things to do after incline visit</h2>
+                                <h3>Dine on Grandview Avenue<button class="iconfont" onclick="toggle_list(this)">&#xe629;</button></h3>
                                 <div class="container">
                                     <div class="black_card dark">
                                         <a href="https://www.steelmillsaloon.com/"><img src="../static/icons/steel_mill.png" alt="Link"></a>
@@ -266,7 +286,7 @@
                                         <p>412-381-19196</p>
                                     </div>
                                 </div>
-                                <h3>Explore Station Square (Less than one mile east of our Lower Station):</h3>
+                                <h3>Explore Station Square (less than one mile east of our lower station)<button class="iconfont" onclick="toggle_list(this)">&#xe629;</button></h3>
                                 <div class="container">
                                     <div class="sheraton_hotel dark">
                                         <a href="https://www.sheraton.com/stationsquare/"><img src="../static/icons/sheraton.png" alt="Link"></a>
@@ -299,7 +319,7 @@
                                         <p>412-337-3941</p>
                                     </div>
                                 </div>
-                                <h3>Explore the North Shore (Just across the West End Bridge from our Lower Station):</h3>
+                                <h3>Explore the North Shore (just across the west end bridge from our lower station)<button class="iconfont" onclick="toggle_list(this)">&#xe629;</button></h3>
                                 <div class="container">
                                     <div class="riv_cas">
                                         <a href="https://www.theriverscasino.com/"><img src="../static/icons/riv_casi.svg" alt="Link"></a>
@@ -356,7 +376,7 @@
                                         <p>412-231-3169</p>
                                     </div>
                                 </div>
-                                <h3>Downtown - Just across the Fort Pitt Bridge from our Lower Station (less than 2 minutes):</h3>
+                                <h3>Downtown - just across the fort pitt bridge from our lower station (less than 2 minutes)<button class="iconfont" onclick="toggle_list(this)">&#xe629;</button></h3>
                                 <div class="container">
                                     <div class="white_card">
                                         <a href="https://www.downtownpittsburgh.com/market-square/"><img src="../static/icons/mar_sq.png" alt="Link"></a>
@@ -389,7 +409,7 @@
                                         <p>412-454-6000</p>
                                     </div>
                                 </div>
-                                <h3>Sites Of Interest</h3>
+                                <h3>Sites Of Interest<button class="iconfont" onclick="toggle_list(this)">&#xe629;</button></h3>
                                 <div class="container">
                                     <div class="black_card dark">
                                         <a href="https://www.visitpittsburgh.com/"><img src="../static/icons/Visit_Pittsburgh.png" alt="Link"></a>

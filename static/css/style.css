@@ -14,10 +14,14 @@
 
 /* Root */
 :root{
+  /* --myRed:#8B4142;
   --myBlue:#41668B;
-  --myRed:#8B4142;
-  --myYellow: #8B8A41;
+  --myYellow: #8B8A41; */
   --myGrey:rgb(207, 207, 207);
+
+  --myRed:#9a4041;
+  --myBlue:#3f71a2;
+  --myYellow: #9d9c41;
 }
 
 /* General Settings */
@@ -108,6 +112,8 @@
     width:100%;
     height:100%;
     background-color: rgba(0, 0, 0, 0.563);
+
+    z-index: 2;
   }
   .fullscreen.active{
     display: block;
@@ -136,7 +142,6 @@ body>.container{
   display: grid;
   grid-template-areas: 
     'header'
-    'nav'
     'main'
     'footer';
   
@@ -148,33 +153,51 @@ body>.container{
 header{
   grid-area: header;
 
+  padding-top:2.5em;
+
   width: 100%;
-  height:40svh;
+  height:100svh;
   text-align: center;
 
-  background:url(../imgs/banner.jpg) no-repeat;
-  background-position-y: 99%;
+  background:url("../imgs/banner.jpg") no-repeat;
   background-size: cover;
+  background-position: center;
 }
 nav{
-  grid-area: nav;
+  grid-area:nav;
 
-  max-height:6svh;
-
-  width:100%;
-  height:auto;
+  width:2em;
+  height:2.5em;
 
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: center;
-  align-items: flex-end;
+  justify-content: flex-end;
+  align-items: center;
 
   box-sizing: border-box;
 
   text-align: center;
 
-  background-color:black;
+  background-color:rgba(0, 0, 0, 0.671);
+  backdrop-filter: blur(5px);
+
+  position:fixed;
+  top:0;
+  right:0;
+  transition: ease 500ms;
+
+  z-index:1;
+
+  overflow:hidden;
+
+  box-shadow: .2em .2em .2em .2em rgba(0, 0, 0, 0.244);
+}
+nav.active{
+  width:100%;
+  right:0%;
+  transition-delay: 0ms;
+  padding-right: .3em;
 }
 main{
   grid-area: main;
@@ -191,57 +214,110 @@ footer{
 
 /* Details */
   /* --[Details]Header */
-  header .background_filter{
-    width: 100%;
-    height: 100%;
-    backdrop-filter: brightness(0.75);
-
-    display:flex;
-    flex-direction: column-reverse;
-    justify-content: flex-start;
-    align-items: center;
-  }
   header .webname{
     width: 100%;
-    margin-bottom:1%;
+    margin:0 0 0 0;
+
+    background-color: rgba(0, 0, 0, 0.477);
+    backdrop-filter: blur(10px);
+
+    display:flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content:center;
+    align-items: center;
+    gap:1em;
+
+    padding: 1em 0 1em 0;
   }
   header .logo {
-      height:6.5em;
+    display:inline-block;
+    height:6.5em;
   }
   header .title{
-      color: white;
-      margin-top: 0;
-      margin-bottom:0;
+    text-align: left;
+    color: white;
+    margin-top: 0;
+    margin-bottom:0;
+    width:fit-content;
   }
 
   /* --Nav Bar */
+  nav figure{
+    height:100%;
+    width: 0;
+    opacity: 0;
+    margin:0 0 0 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:.5em;
+    transition:ease 300ms;
+    overflow: hidden;
+  }
+  nav.active figure{
+    flex:1;
+    opacity: 1;
+    padding-left: .5em;
+  }
+  nav .logo{
+    height:100%;
+    object-fit: contain;
+  }
+  nav figcaption{
+    text-wrap: nowrap;
+    overflow: hidden;
+    color:white;
+  }
+  nav .toggle{
+    flex-shrink: 0;
+    display: block;
+    height:4svh;
+    width: 2em;
+    border: none;
+    background-color: black;
+    color: white;
+    transform: rotate(90deg);
+  }
+  nav .links{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: nowrap;
+    overflow: hidden;
+  }
   nav a{
     display: inline-block;
-    width:19%;
     height: 90%;
     background-color: var(--myGrey);
     color: black;
     text-decoration: none;
 
-    text-align: bottom;  
-    border-radius: 20px 20px 0 0;
+    text-align: center;  
+    text-wrap: nowrap;
 
-    box-shadow: 0px -5px 10px -5px rgba(0, 0, 0, 0.833) inset;
-
-    margin-left: 5px;
-    margin-right: 5px;
+    transition:width ease 500ms 0ms, background-color ease 200ms 0ms;
+    width:0;
+  }
+  nav.active a{
+    transition:width ease 500ms 300ms;
+    width:7.5em;
+    overflow:hidden;
   }
   nav a:hover{
-    text-decoration: underline;
+    background-color: white;
+    color:black;
   }
   nav .selected{
-    box-shadow: 0px -5px 10px -5px rgba(0, 0, 0, 0) inset;
-    background-color: white;
-  }
-  nav .selected.red{
-    box-shadow: 0px -5px 10px -5px rgba(0, 0, 0, 0) inset;
-    color:white;
     background-color: var(--myRed);
+    color:white;
+  }
+  nav a:first-of-type{
+    border-radius: .25em 0 0 .25em  ;
+  }
+  nav a:last-of-type{
+    border-radius: 0 .25em .25em 0  ;
   }
 
   /* Footer */

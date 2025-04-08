@@ -1,11 +1,3 @@
-/* Root */
-:root{
-    --myBlue:#41668B;
-    --myRed:#8B4142;
-    --myYellow: #8B8A41;
-    --myGrey:rgb(207, 207, 207);
-}
-
 /* Design of This Page */
 main{
     display: flex;
@@ -14,18 +6,15 @@ main{
 }
 /* Main Content */
 main>div{
-    padding: 3% 2% 3% 2%;
+    padding: 1em 1em 1em 1em;
 }
 main>.item1{
-    max-height: 45svh;
     background-color: var(--myRed);
 
     display: grid;
     grid-template-areas: 
-        'text-h1 figure'
-        'text-h2 figure'
-        'text-p figure';
-    grid-template-rows: 10% 10% 74%;
+        'article figure'
+        'article figure';
     grid-template-columns: 60% 38%;
     gap:3% 2%;
 }
@@ -41,12 +30,6 @@ main>.item2{
 }
 main>.item3{
     max-height:45svh;
-
-    display: grid;
-    grid-template-areas: 
-    'h1 h1'
-    'gallery gallery';
-    grid-template-rows: 10% 90%;
 }
 
 /* Item1 (Introduction)*/
@@ -55,17 +38,9 @@ main>.item1 *{
     color:white;
 }
     /* --[Item1] Text */
-    main>.item1 h1{
-        grid-area:text-h1;
-    }
-    main>.item1 h2{
-        grid-area:text-h2;
-    }
-    main>.item1 p{
-        grid-area:text-p;
-
-        padding-right:5px;
-        overflow: auto;
+    main>.item1>article{
+        grid-area: article;
+        padding-bottom: 1em;
     }
     /* --[Item1] Figure */
     main>.item1>figure{
@@ -74,8 +49,8 @@ main>.item1 *{
     main>.item1>figure>iframe{
         border: none;
         border-radius:30px;
-        height:100%;
         width:100%;
+        aspect-ratio: 16/9;
     }
 
 /* Item2*/
@@ -158,7 +133,6 @@ main>.item1 *{
     /* [Item3] --Figure*/
     main>.item3>figure{
         margin-left: 0;
-        grid-area: gallery;
 
         display: flex;
         flex-direction: column;
@@ -168,16 +142,12 @@ main>.item1 *{
     }
         /* [Item3] --[Figure] --figcaption */
         main>.item3 figure>figcaption{
-            grid-area:figcap;
-
             padding:.4% .2% .4% .2%;
             width:fit-content;
             color:var(--myRed);
         }            
         /* [Item3] --[Figure] --imgs */
         main>.item3 figure>.imgs{
-            grid-area:imgs;
-
             background-color: var(--myRed);
 
             display: flex;
@@ -186,13 +156,16 @@ main>.item1 *{
             flex-wrap: nowrap;
             gap:1%;
 
-            padding: 1% 0 1% 0;
+            height:30svh;
+            padding: .8em 1em .8em 1em;
 
             overflow: auto;
+
         }
-        main>.item3 figure>.imgs img{
-            max-width: 100%;
+        main>.item3 figure>.imgs img{   
+            width: 100%;
             height:100%;
+            object-fit: contain;
         }
 
     /* [Item3] --Fullscreen */

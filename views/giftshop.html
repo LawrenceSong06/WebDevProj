@@ -15,12 +15,15 @@
     <script src="../static/js/script.js" defer></script>
     <script src="../static/js/page_controlls.js" defer></script>
     <script src="../static/js/fullscreen.js" defer></script>
+    <script src="../static/js/toggle_nav.js" defer></script>
     <!--  JS for this page-->
 
 
     <!-- CSS -->
     <link rel="stylesheet" href="../static/css/style.css">
     <link rel="stylesheet" href="../static/css/giftshop.css">
+    <link rel="stylesheet" href="../static/css/mobile_style.css">
+    <link rel="stylesheet" href="../static/css/mobile_giftshop.css">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,102 +33,108 @@
 <body onload="init()">
     <div class="container">
         <header>
-            <div class="background_filter">
-                <div class="webname">
-                    <img src="../static/imgs/DuqInclineLogo.png" alt="Our logo" class="logo" title="The logo of the webpage, illustrating rail car of Duquesne Incline in a black-and-whtie hand drawn style">
-                    <p class="title">THE DUQUESNE INCLINE</p>
-                </div>
+            <div class="webname">
+                <img src="../static/imgs/DuqInclineLogo.png" alt="Our logo" class="logo" title="The logo of the webpage, illustrating rail car of Duquesne Incline in a black-and-whtie hand drawn style">
+                <p class="title">THE DUQUESNE INCLINE</p>
             </div>
         </header>
-        <nav>
-            <a href="../index.html" class="subtitle red">Home</a>
-            <a href="../views/visitors.html" class="subtitle">For Visitors</a>
-            <a href="../views/giftshop.html" class="subtitle">Gift Shop</a>
-            <a href="../views/contact.html" class="subtitle">Contact Us</a>
+        <nav class="active">
+            <figure>
+                <img src="../static/imgs/DuqInclineLogo.png" alt="Our logo" class="logo" title="The logo of the webpage, illustrating rail car of Duquesne Incline in a black-and-whtie hand drawn style">
+                <figcaption class="subtitle">The Duquesne Incline</figcaption>
+            </figure>
+            <button class="toggle iconfont" onclick="toggle_nav(this)">&#xe620;</button>
+            <div class="links">
+                <a href="../index.html" class="subtitle red">Home</a>
+                <a href="../views/visitors.html" class="subtitle">For Visitors</a>
+                <a href="../views/giftshop.html" class="subtitle">Gift Shop</a>
+                <a href="../views/contact.html" class="subtitle">Contact Us</a>
+            </div>
         </nav>
+
         <main>
             <h1 class="align-center">Visit Our Giftshop!</h1>
             <h2 class="align-center">Our Beautiful Items,featured:</h2>
             <div class="container">
-                <div class="items dark">
+                <div class="items">
                     <figure>
                         <img src="../static/imgs/giftshop/hammered_plate.jpg" alt="Failed to Load Image">
                     </figure>
                     <h3 class="name align-center">Hand Hammered Plate</h3>
                 </div>
-                <div class="items dark">
+                <div class="items">
                     <figure>
                         <img src="../static/imgs/giftshop/hammered_plate2.jpg" alt="Failed to Load Image">
                     </figure>
                     <h3 class="name align-center">Hand Hammered Plate</h3>
                 </div>
-                <div class="items dark">
+                <div class="items">
                     <figure>
                         <img src="../static/imgs/giftshop/hammered_point.jpg" alt="Failed to Load Image">
                     </figure>
                     <h3 class="name align-center">Hand Hammered Point</h3>
                 </div>
-                <div class="items dark">
+                <div class="items">
                     <figure>
                         <img src="../static/imgs/giftshop/mug.jpg" alt="Failed to Load Image">
                     </figure>
                     <h3 class="name align-center">Featured Mug</h3>
                 </div>
-                <div class="items dark">
+                <div class="items">
                     <figure>
                         <img src="../static/imgs/giftshop/Pin.jpg" alt="Failed to Load Image">
                     </figure>
                     <h3 class="name align-center">Duquesne Incline Pin</h3>
                 </div>
-                <div class="items dark">
+                <div class="items">
                     <figure>
                         <img src="../static/imgs/giftshop/plate.jpg" alt="Failed to Load Image">
                     </figure>
                     <h3 class="name align-center">Hand Hammered Plate</h3>
                 </div>
-                <div class="items dark">
+                <div class="items">
                     <figure>
                         <img src="../static/imgs/giftshop/plate4.jpg" alt="Failed to Load Image">
                     </figure>
                     <h3 class="name align-center">Hand Hammered Plate</h3>
                 </div>
-                <div class="items dark">
+                <div class="items">
                     <figure>
                         <img src="../static/imgs/giftshop/point1.jpg" alt="Failed to Load Image">
                     </figure>
                     <h3 class="name align-center">Hand Hammered Little Square Point</h3>
                 </div>
-                <div class="items dark">
+                <div class="items">
                     <figure>
                         <img src="../static/imgs/giftshop/shotglass1.jpg" alt="Failed to Load Image">
                     </figure>
                     <h3 class="name align-center">Featured Shot Glass</h3>
                 </div>
-                <div class="items dark">
+                <div class="items">
                     <figure>
                         <img src="../static/imgs/giftshop/shotglass2.jpg" alt="Failed to Load Image">
                     </figure>
                     <h3 class="name align-center">Featured Shot Glass</h3>
                 </div>
-                <div class="items dark">
+                <div class="items">
                     <figure>
                         <img src="../static/imgs/giftshop/shotglass3.jpg" alt="Failed to Load Image">
                     </figure>
                     <h3 class="name align-center">Featured Shot Glass</h3>
                 </div>
-                <div class="items dark">
+                <div class="items">
                     <figure>
                         <img src="../static/imgs/giftshop/shotglass4.jpg" alt="Failed to Load Image">
                     </figure>
                     <h3 class="name align-center">Featured Shot Glass</h3>
                 </div>
-                <div class="items dark">
+                <div class="items">
                     <figure>
                         <img src="../static/imgs/giftshop/snowglobe.jpg" alt="Failed to Load Image">
                     </figure>
                     <h3 class="name align-center">Featured Snow Globe</h3>
                 </div>
-                <div class="items dark">
+                <div class="items">
                     <figure>
                         <img src="../static/imgs/giftshop/wood_car_resized_1.jpg" alt="Failed to Load Image">
                     </figure>
